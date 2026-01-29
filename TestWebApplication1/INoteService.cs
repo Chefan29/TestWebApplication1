@@ -1,6 +1,6 @@
 ﻿namespace TestWebApplication1
 {
-    internal interface INoteService
+    public interface INoteService
     {
         List<Note> GetAll();
         Note? GetById(int id);

@@ -13,7 +13,7 @@
         public (bool ok, string? error, Note? note) Create(CreateNoteDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
-                return (false, "Title is required", null);
+                return (false, "Требуется заголовок", null);
 
             var note = new Note(
                 _nextId++,
@@ -29,7 +29,7 @@
         public (bool ok, string? error, Note? note) Update(int id, UpdateNoteDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
-                return (false, "Title is required", null);
+                return (false, "Требуется заголовок", null);
 
             var index = _notes.FindIndex(n => n.Id == id);
             if (index == -1)
