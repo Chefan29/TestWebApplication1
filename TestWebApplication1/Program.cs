@@ -1,8 +1,13 @@
-﻿using TestWebApplication1;
+﻿using Microsoft.EntityFrameworkCore;
+using TestWebApplication1;
+using TestWebApplication1.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<INoteService, InMemoryNoteService>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
+builder.Services.AddScoped<INoteService, EfNoteService>();
 
 builder.Services.AddControllers();
 
